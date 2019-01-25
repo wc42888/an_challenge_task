@@ -38,7 +38,7 @@ ProductCard.propTypes = {
 
 const ProductCardContainer = styled.div`
   width: 280px;
-  height: 260px;
+  min-height: 260px;
   background-color: white;
   margin-bottom: 10px;
 `;
