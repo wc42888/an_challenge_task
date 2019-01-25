@@ -10,11 +10,13 @@ import {
 } from '../../constants/typography/font';
 
 const Header = ({ numberOfProducts, itemsPerPage, setItemsPerPage }) => {
-  const options = [
-    { value: 24, label: '24 per page' },
-    { value: 48, label: '48 per page' },
-    { value: 96, label: '96 per page' },
-  ];
+  const getOptions = () => {
+    const options = [];
+    for (let i = 0; i <= numberOfProducts; i += 8) {
+      options.push({ value: i, label: `${i} per page` });
+    }
+    return options;
+  };
 
   const setValue = ({ value }) => setItemsPerPage(value);
 
@@ -35,7 +37,7 @@ const Header = ({ numberOfProducts, itemsPerPage, setItemsPerPage }) => {
     }),
   };
 
-  const findSelectedOption = () => options.find(option => option.value === itemsPerPage);
+  const findSelectedOption = () => getOptions().find(option => option.value === itemsPerPage);
 
   return (
     <HeaderContainer>
@@ -44,7 +46,7 @@ const Header = ({ numberOfProducts, itemsPerPage, setItemsPerPage }) => {
         <Subtitle>{`${numberOfProducts} products`}</Subtitle>
         <Select
           onChange={setValue}
-          options={options}
+          options={getOptions()}
           styles={selectTagStyle}
           value={findSelectedOption()}
         />
