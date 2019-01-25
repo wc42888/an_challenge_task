@@ -4,29 +4,34 @@ import styled from 'styled-components';
 import Select from 'react-select';
 import {
   LARGE_SIZE_FONT,
-  APP_FONT_FAMILTY,
+  APP_FONT_FAMILY,
   APP_FONT_WEIGHT,
   LIGHTER_FONT_COLOR,
 } from '../../constants/typography/font';
 
 const Header = ({ numberOfProducts, itemsPerPage, setItemsPerPage }) => {
   const options = [
-    { value: 8, label: '8 per page' },
-    { value: 16, label: '16 per page' },
     { value: 24, label: '24 per page' },
+    { value: 48, label: '48 per page' },
+    { value: 96, label: '96 per page' },
   ];
 
   const setValue = ({ value }) => setItemsPerPage(value);
 
   const selectTagStyle = {
     container: style => ({ ...style, width: 150 }),
-    control: style => ({ ...style, border: '0 !important', boxShadow: '0 !important' }),
+    control: style => ({
+      ...style,
+      border: '0 !important',
+      boxShadow: '0 !important',
+      backgroundColor: '#EEEEEE',
+    }),
     dropdownIndicator: style => ({ ...style, color: 'black' }),
     indicatorSeparator: () => ({ }),
     singleValue: style => ({
       ...style,
       color: LIGHTER_FONT_COLOR,
-      fontFamily: APP_FONT_FAMILTY,
+      fontFamily: APP_FONT_FAMILY,
     }),
   };
 
@@ -56,7 +61,7 @@ Header.propTypes = {
 
 const HeaderContainer = styled.div`
   border-bottom: 1px solid ${LIGHTER_FONT_COLOR};
-  font-family: ${APP_FONT_FAMILTY};
+  font-family: ${APP_FONT_FAMILY};
 `;
 
 const Title = styled.div`
